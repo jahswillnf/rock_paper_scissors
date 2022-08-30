@@ -1,5 +1,7 @@
 let cpuScore = 0;
 let playerScore = 0;
+let computerSelection;
+let playerselection;
 
 function	getComputerChoice()
 {
