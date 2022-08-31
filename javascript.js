@@ -1,5 +1,7 @@
 let cpuScore = 0;
 let playerScore = 0;
+let computerSelection;
+let playerSelection;
 
 let playerSelection;
 let computerSelection;
@@ -117,3 +119,7 @@ function 	game()
  	
 }
 
+<<<<<<< HEAD
+=======
+console.log(game());
+>>>>>>> origin
