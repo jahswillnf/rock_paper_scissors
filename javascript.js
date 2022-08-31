@@ -1,6 +1,11 @@
 let cpuScore = 0;
 let playerScore = 0;
 
+let playerSelection;
+let computerSelection;
+let playerChoice;
+
+
 function	getComputerChoice()
 {
 	let choice; 
@@ -18,17 +23,42 @@ function	getComputerChoice()
 		return ('scissors');
 }
 
+	const buttons = document.querySelectorAll('button');
+	buttons.forEach((button)=>
+	{
+		button.addEventListener('click',()=>
+		{
+	
+			playerSelection = button.id;
+				if (playerSelection == 'rock')	
+				{
+					console.log(playerSelection);
+				}
+				else if (playerSelection == 'paper')
+				{
+					console.log(playerSelection);
+				}
+				else if (playerSelection == 'scissors')
+				{
+					console.log(playerSelection);
+				}
+				game();
+		})
+	})
+
+
 function	capitalize(string) 
 {	
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
+
 function	playRound(playerSelection, computerSelection)
 {
-	let player 	= prompt('Please type your weapon');
 
-	computerSelection = getComputerChoice().toLowerCase();
-	playerSelection = player.toLowerCase();
+	computerSelection = getComputerChoice();
+
 
 	if (computerSelection == playerSelection)
 		return ('Draw!');
@@ -52,32 +82,38 @@ function	playRound(playerSelection, computerSelection)
 
 }
 
+
 function	winnerDecider()
 {
-	if (playerScore > cpuScore)
+	if (cpuScore < 5 && playerScore < 5)
 	{
-		return ('Player Wins!')
+		return(null);
 	}
-	else if (playerScore < cpuScore)
+	if (cpuScore > 4 && playerScore < 5)
 	{
-			return ('You Lost! CPU win')
+		cpuScore = 0;
+		playerScore = 0;
+		return ('CPU Wins!')
 	}
-	else
-		return ('Draw');
+	else if (playerScore > 4 && cpuScore < 5)
+	{
+		cpuScore = 0;
+		playerScore = 0;	
+		return ('Player  Wins!')
+	}
+
 }
 
 function 	game()
 {
-	let	i;
+	const display = document.querySelector('.display');
+	display.innerText = playRound(playerSelection, computerSelection);
+	
+	const winner = document.querySelector('.winner');
+	winner.innerText =  winnerDecider() ;
 
-	i = 1;
-	while (i <= 5)
-		{
-			console.log("Round ", i);
-			console.log(playRound(playerSelection, computerSelection));
-			i++;
-		}
-	console.log(winnerDecider());	
+	const score = document.querySelector('.score');
+	score.innerText = `Player Score : ${playerScore } \n \n CPU Score : ${cpuScore}`;
+ 	
 }
 
-console.log(game());
