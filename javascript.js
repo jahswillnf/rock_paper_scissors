@@ -1,7 +1,5 @@
 let cpuScore = 0;
 let playerScore = 0;
-let computerSelection;
-let playerSelection;
 
 let playerSelection;
 let computerSelection;
@@ -118,8 +116,3 @@ function 	game()
 	score.innerText = `Player Score : ${playerScore } \n \n CPU Score : ${cpuScore}`;
  	
 }
-
-<<<<<<< HEAD
-=======
-console.log(game());
->>>>>>> origin
